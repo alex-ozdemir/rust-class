@@ -78,6 +78,49 @@ particular, how do we write data structures using the ownership rules?
 Hopefully over the course of the week students will run afoul of the borrow
 checker a bunch, and gain some more intuition for what safe borrows are.
 
+The pre-assignment lecture will begin with the ownership/borrow rules. It will
+then cover some of the standard library's API around ownership. In particular
+it will cover `mem::swap`, `Option::take`, and `Box`.
+
+We'll then discuss the API for the linked list that will be implemented, paying
+particular attention the ownership properties of the API and when `Option` is
+used.
+
+The linked list will need to correctly implement the following trait:
+
+```rust
+trait StackQueue<T> {
+   fn new() -> Self;
+   fn push_back(&mut self, item: T);
+   fn push_front(&mut self, item: T);
+   fn pop_front(&mut self) -> Option<T>;
+   fn peek_front(&self) -> Option<&T>;
+   fn size(&self) -> usize;
+}
+```
+
+Some presentation prompts:
+
+> `pop_front` can be implemented in multiple ways. One way uses `size` and
+> `Option::unwrap`. Another does not. Articulate the difference in the
+> implementations.
+
+
+> In this assignment we implemented a singly linked list using `Box`. What
+> about doubly linked lists?
+
+
+> In Haskell, the following is valid:
+>
+> ```haskell
+> data List a = Cons a (List a) | None
+> ```
+>
+> What about this rust `enum`:
+> ```rust
+> enum List<T> { Cons(T,List<T>), None }
+> ```
+
 ### Week 3: Trees
 
 This week is about taking that knowledge of the ownership system and trying to
@@ -144,6 +187,7 @@ not.
    * Drop
    * Non-lexical borrow
    * Final Project?
+   * Rc, RefCell, Cell, etc.
 
 I'll also be spending the summer working with Rust, and will probably come up
 with new ideas along the way.
