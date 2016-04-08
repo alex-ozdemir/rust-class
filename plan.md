@@ -86,7 +86,8 @@ We'll then discuss the API for the linked list that will be implemented, paying
 particular attention the ownership properties of the API and when `Option` is
 used.
 
-The linked list will need to correctly implement the following trait:
+The linked list will need to correctly implement the following trait such that
+each function runs in worst case constant time:
 
 ```rust
 trait StackQueue<T> {
@@ -99,16 +100,20 @@ trait StackQueue<T> {
 }
 ```
 
-Some presentation prompts:
+#### Presentation Prompts
+
+A reasonable one
 
 > `pop_front` can be implemented in multiple ways. One way uses `size` and
 > `Option::unwrap`. Another does not. Articulate the difference in the
 > implementations.
 
+An advanced on
 
 > In this assignment we implemented a singly linked list using `Box`. What
 > about doubly linked lists?
 
+An easier one (probably too easy)
 
 > In Haskell, the following is valid:
 >
@@ -129,6 +134,16 @@ Specifically tree rotations involve some pointer swaps which it is difficult
 for the compiler to verify. Over the course of the week students will learn how
 to solve this problem using safe abstractions provided by the standard library.
 
+I'm somewhat unsure about this week. I wonder how much it would really help
+after the linked-list week. The student probably won't use any new standard
+library features - they would just be using them to solve very slightly more
+complex memory problems.
+
+It might be good to tear this week out and put in a week on some of the other
+memory APIs (RC, Cell, RefCell, etc). I need to come up with an assignment for
+this though. Also, the RC/Cell week would probably go later on, and the macros
+assignment would get bumped up a week.
+
 ### Week 4: Macros, Nom, Parsing
 
 Now we shift gears a bit. This week students will use a Rust library (nom) to
@@ -140,8 +155,8 @@ as to whether to alert them to that fact so they more quickly recognize it or
 to let them discover it for themselves.
 
 The assignment will be to take the example parser for nom (which 'parses' an
-expression into its value) and turn it into an actually parser, which produces
-an AST for the expression.
+expression into its value) and turn it into an actual parser, which produces an
+AST for the expression.
 
 ### Week 5: Lifetimes
 
@@ -151,6 +166,12 @@ sneaks up on them (in parsing). Now its time to take this knowledge to the next
 level by exploring lifetimes. Roughly speaking this assignment will involve
 using data structures which hold references into other data structures, perhaps
 in pursuit of avoiding extra copies in performance-sensitive situations.
+
+This can actually be done as an expansion upon the last assignment, by trying
+to make a parser or AST processor that minimizes the number of copies that
+occur. The only problem with this approach is that it is a bit wild-west-y.
+The nature of lifetimes may shine more clearly through a more carefully
+constructed assignment.
 
 ### Week 6: Unsafe
 
@@ -188,6 +209,12 @@ not.
    * Non-lexical borrow
    * Final Project?
    * Rc, RefCell, Cell, etc.
+
+#### Rc, RefCell, Cell
+
+These are all the tools that allow programmers to break out of the strict
+ownership rules. We should definitely take a look at them, but I actually
+haven't use them much so I'm not sure how too yet.
 
 I'll also be spending the summer working with Rust, and will probably come up
 with new ideas along the way.
