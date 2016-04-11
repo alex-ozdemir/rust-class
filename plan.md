@@ -1,8 +1,8 @@
-# Rust: Memory Safety in Programming Languages
+# Memory Safety in Programming Languages
 
 This document is a proposal for a student-led half semester course.
-Loosely speaking the class would be titled _Rust: Memory Safety in Programming
-Languages_.
+Loosely speaking the class would be titled _Memory Safety in Programming
+Languages_. The class will use the Rust programming language heavily.
 
 ## Course Vision
 
@@ -108,7 +108,7 @@ A reasonable one
 > `Option::unwrap`. Another does not. Articulate the difference in the
 > implementations.
 
-An advanced on
+An advanced one
 
 > In this assignment we implemented a singly linked list using `Box`. What
 > about doubly linked lists?
@@ -154,9 +154,11 @@ actually has some memory safety components to it. There's some flexibility here
 as to whether to alert them to that fact so they more quickly recognize it or
 to let them discover it for themselves.
 
-The assignment will be to take the example parser for nom (which 'parses' an
-expression into its value) and turn it into an actual parser, which produces an
-AST for the expression.
+The assignment will be to take [the example
+parser](http://rust.unhandledexpression.com/nom/#example) for nom (which
+'parses' an expression into its value) and turn it into an actual parser, which
+produces an AST for the expression. The design of the parser is pretty clever,
+but also brings up some memory questions.
 
 ### Week 5: Lifetimes
 
@@ -173,20 +175,29 @@ occur. The only problem with this approach is that it is a bit wild-west-y.
 The nature of lifetimes may shine more clearly through a more carefully
 constructed assignment.
 
+### Placeholder: Rc, Cell, RefCell
+
 ### Week 6: Unsafe
 
 Now we venture even deeper into Rust, this week exploring `unsafe`, the feature
 which allows certain compiler checks to be elided on code blocks. In the first
 part of the assignment students will write a data structure which requires the
 use of `unsafe`, such as a growable array. The students will then trade code
-and attempt to break the data structure in various ways: first by changing code
-in unsafe blocks, then by changing safe blocks, and then by not changing the
-data structure code at all (the data structure should not be breakable in this
-way).
+and attempt to break the data structure in various ways:
+
+   1. by changing code in unsafe blocks
+   1. by changing safe blocks
+   1. by not changing the data structure code at all (the data structure should
+      not be breakable in this way).
 
 In some sense the end goal of this week is to get some sense of what `unsafe`
 means in Rust, and how it interacts with the rest of the language (hint:
 `unsafe` taints things, but ultimately privacy saves you).
+
+A relevant resource for designing this week's assignment will be Alexis
+Beingessner's book, the [Rustonomicon](https://doc.rust-lang.org/nomicon/),
+which discusses `unsafe` in great deal and I believe also walks through an
+implementation of `Vec`.
 
 ### Week 7: Graphs
 
@@ -195,11 +206,13 @@ Doing so involves a non-trivial amount of coding, but also some very
 non-obvious design decisions around the API. Values such as ease-of-use,
 performance, and safety interact in interesting ways, and I'm not sure it's
 possible to get all 3. An emphasis will be placed on writing a graph with an
-API which allows for easy, safe, and efficient implementations of common graph
+API which allows for easy, safe, and efficient implementations of graph
 algorithms.
 
 Students may also do an activity involving taking a look at existing graph
-libraries (such as `petgraph`) and critiquing them - seeing what they value.
+libraries (such as
+[`petgraph`](https://github.com/bluss/petulant-avenger-graphlibrary)) and
+critiquing them - seeing what they value.
 
 ### Miscellaneous Ideas
 
@@ -218,3 +231,23 @@ haven't use them much so I'm not sure how too yet.
 
 I'll also be spending the summer working with Rust, and will probably come up
 with new ideas along the way.
+
+### Further Resources
+
+#### Various Courses:
+
+   * [U Iowa](http://homepage.cs.uiowa.edu/~achampion/teaching/plc/lectures.shtml)
+   * [UPenn](http://cis198-2016s.github.io/schedule/)
+   * [U Virginia OS](http://rust-class.org/index.html) - also a reflective
+       [sub-page](http://rust-class.org/0/pages/using-rust-for-an-undergraduate-os-course.html)
+
+#### Various Blogs:
+
+   * [Huon Wilson](http://huonw.github.io/)
+   * [Niko Matsakis](http://smallcultfollowing.com/babysteps/blog/archives/)
+
+#### Various Posts
+   * [Error Handling](http://blog.burntsushi.net/rust-error-handling/), by
+       Andrew Gallant
+   * [Rust via Core
+       Values](http://designisrefactoring.com/2016/04/01/rust-via-its-core-values/)
