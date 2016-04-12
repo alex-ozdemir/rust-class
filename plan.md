@@ -53,14 +53,11 @@ Through the course students might:
 
 The first week is intended to get people comfortable with some of the basics of
 the Rust language. This includes the following:
-   * Syntax of functions, structs, enums, traits, impls, and statements
+   * Syntax of functions, structs, enums, and statements
    * Type inference
-   * Generics
    * Closures, iterator interface / functional programming
    * Mutable and immutable variables
-   * [simple] borrows and mutable borrows, but only on a surface level
    * Modules, crates?
-   * Existence of macros
 
 For the most part I envision this week's assignment to be very lab-like, in
 which students write a lot of small bits of code which cover a broad base of
@@ -222,6 +219,7 @@ not.
    * Non-lexical borrow
    * Final Project?
    * Rc, RefCell, Cell, etc.
+   * Variance
 
 #### Rc, RefCell, Cell
 
