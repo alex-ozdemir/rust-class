@@ -6,6 +6,15 @@ Languages_. The class will use the Rust programming language heavily.
 
 ## Course Vision
 
+### Inspiration
+
+A constant struggle in systems programming is writing programs that are highly
+performant, memory safe, and easy to write/understand. The Rust programming
+language seeks to solve this problem by using an elaborate type system to
+statically verify memory safety. This solution is far from perfect, but is
+ingenious nonetheless, and in exploring the Rust type system and the impact of
+it on programming one can learn a lot about the problem of memory safety.
+
 ### Course Zen
 
 The course essentially aims to guide students through the process of
