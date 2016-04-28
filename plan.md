@@ -166,6 +166,15 @@ parser](http://rust.unhandledexpression.com/nom/#example) for nom (which
 produces an AST for the expression. The design of the parser is pretty clever,
 but also brings up some memory questions.
 
+#### Presentation Prompts
+
+Theory Prompt:
+> One can imagine an expression as a program which when run produces a value.
+> Under this understanding `nom`'s example parser simulatenously parses and
+> evaluates a program. Typically parsing produces an AST - where is it?
+> Typically evaluation requires traversing the AST, which requires supporting
+> data structures - where are they?
+
 ### Week 5: Lifetimes
 
 By this point they should have a reasonable amount of experience dealing with
@@ -229,6 +238,7 @@ not.
    * Final Project?
    * Rc, RefCell, Cell, etc.
    * Variance
+   * MIR?
 
 #### Rc, RefCell, Cell
 
@@ -250,6 +260,8 @@ with new ideas along the way.
 
 #### Various Blogs:
 
+   * [Rust Blog](http://blog.rust-lang.org/)
+      * [Mid-Level Representation](http://blog.rust-lang.org/2016/04/19/MIR.html)
    * [Huon Wilson](http://huonw.github.io/)
    * [Niko Matsakis](http://smallcultfollowing.com/babysteps/blog/archives/)
 
