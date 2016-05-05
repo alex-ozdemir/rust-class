@@ -156,9 +156,7 @@ Now we shift gears a bit. This week students will use a Rust library (nom) to
 write a parser for simple arithmetic expressions. This library is macro-based,
 so they should gain a lot of experience with the macro system in the process.
 However, while it may not be obvious, the problem they're being asked to solve
-actually has some memory safety components to it. There's some flexibility here
-as to whether to alert them to that fact so they more quickly recognize it or
-to let them discover it for themselves.
+actually has some memory safety components to it.
 
 The assignment will be to take [the example
 parser](http://rust.unhandledexpression.com/nom/#example) for nom (which
@@ -264,6 +262,7 @@ with new ideas along the way.
       * [Mid-Level Representation](http://blog.rust-lang.org/2016/04/19/MIR.html)
    * [Huon Wilson](http://huonw.github.io/)
    * [Niko Matsakis](http://smallcultfollowing.com/babysteps/blog/archives/)
+   * [llogiq](https://llogiq.github.io/)
 
 #### Various Posts
    * [Error Handling](http://blog.burntsushi.net/rust-error-handling/), by
