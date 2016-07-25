@@ -96,13 +96,19 @@ The linked list will need to correctly implement the following trait such that
 each function runs in worst case constant time:
 
 ```rust
-trait StackQueue<T> {
-   fn new() -> Self;
-   fn push_back(&mut self, item: T);
-   fn push_front(&mut self, item: T);
-   fn pop_front(&mut self) -> Option<T>;
-   fn peek_front(&self) -> Option<&T>;
-   fn size(&self) -> usize;
+pub trait Stack<T> {
+    fn new() -> Self;
+    fn push_front(&mut self, item: T);
+    fn pop_front(&mut self) -> Option<T>;
+    fn peek_front(&self) -> Option<&T>;
+    fn len(&self) -> usize;
+    // This is a bonus and linear time and space are permitted for it
+    fn remove_first(&mut self, _: &T) -> Option<T> { None }
+}
+
+// If you do `remove_first` you'll need `impl<T: Eq>`
+impl<T> Stack<T> for SinglyLinkList<T> {
+   // ...
 }
 ```
 
@@ -118,6 +124,34 @@ An advanced one
 
 > In this assignment we implemented a singly linked list using `Box`. What
 > about doubly linked lists?
+
+An interesting one:
+
+> Often times when writing code in the functional style we find ourself wanting
+> to write 
+>
+> ```rust
+> self: &mut T
+> *self = expression!(*self)
+> ```
+>
+> But we can't, because we can't move a borrowed value, even temporarily. So we
+> end up writing:
+>
+> ```rust
+> self: &mut T
+> tmp_self = mem::replace(self, TMP)
+> *self = expression!(tmp_self)
+> ```
+>
+> But this may be less efficient (or require LLVM to do more work), isn't
+> expressing our intention clearly, and may be impossible when there is no
+> convenient TMP.
+>
+> How would you address this use case more clearly. What advantages and
+> drawbacks does your solution have? When you think you have firm answers to
+> the above, check out [this](https://crates.io/crates/replace-map).
+
 
 An easier one (probably too easy)
 
@@ -139,6 +173,8 @@ solve a problem which is slightly more complicated from a memory perspective.
 Specifically tree rotations involve some pointer swaps which it is difficult
 for the compiler to verify. Over the course of the week students will learn how
 to solve this problem using safe abstractions provided by the standard library.
+
+This could also be a week that we switch over onto Cargo completely.
 
 I'm somewhat unsure about this week. I wonder how much it would really help
 after the linked-list week. The student probably won't use any new standard
@@ -163,6 +199,9 @@ parser](http://rust.unhandledexpression.com/nom/#example) for nom (which
 'parses' an expression into its value) and turn it into an actual parser, which
 produces an AST for the expression. The design of the parser is pretty clever,
 but also brings up some memory questions.
+
+Another option is to implement a lambda calculus interpreter. With the right
+approach it leads to the same issues.
 
 #### Presentation Prompts
 
