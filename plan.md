@@ -58,7 +58,7 @@ Through the course students might:
 
 ## Course Outline
 
-### Week 0/1: Warm-Up
+### Week 0: Warm-Up
 
 The first week is intended to get people comfortable with some of the basics of
 the Rust language. This includes the following:
@@ -77,7 +77,7 @@ composition function, although this might be a bit too far out there.
 
 This also may end up being a week and a half, or two weeks.
 
-### Week 2: A Simple Linked List
+### Week 1: A Simple Linked List
 
 This week is about interacting with the borrow checker for the first time. In
 particular, how do we write data structures using the ownership rules?
@@ -104,6 +104,7 @@ pub trait Stack<T> {
     fn len(&self) -> usize;
     // This is a bonus and linear time and space are permitted for it
     fn remove_first(&mut self, _: &T) -> Option<T> { None }
+    fn reverse(&mut self) { }
 }
 
 // If you do `remove_first` you'll need `impl<T: Eq>`
@@ -166,27 +167,7 @@ An easier one (probably too easy)
 > enum List<T> { Cons(T,List<T>), None }
 > ```
 
-### Week 3: Trees
-
-This week is about taking that knowledge of the ownership system and trying to
-solve a problem which is slightly more complicated from a memory perspective.
-Specifically tree rotations involve some pointer swaps which it is difficult
-for the compiler to verify. Over the course of the week students will learn how
-to solve this problem using safe abstractions provided by the standard library.
-
-This could also be a week that we switch over onto Cargo completely.
-
-I'm somewhat unsure about this week. I wonder how much it would really help
-after the linked-list week. The student probably won't use any new standard
-library features - they would just be using them to solve very slightly more
-complex memory problems.
-
-It might be good to tear this week out and put in a week on some of the other
-memory APIs (RC, Cell, RefCell, etc). I need to come up with an assignment for
-this though. Also, the RC/Cell week would probably go later on, and the macros
-assignment would get bumped up a week.
-
-### Week 4: Macros, Nom, Parsing
+### Week 2: Macros, Nom, Parsing
 
 Now we shift gears a bit. This week students will use a Rust library (nom) to
 write a parser for simple arithmetic expressions. This library is macro-based,
@@ -212,7 +193,7 @@ Theory Prompt:
 > Typically evaluation requires traversing the AST, which requires supporting
 > data structures - where are they?
 
-### Week 5: Lifetimes
+### Week 3: Lifetimes
 
 By this point they should have a reasonable amount of experience dealing with
 ownership, both when it is explicit (building data structures) and when it
@@ -227,9 +208,9 @@ occur. The only problem with this approach is that it is a bit wild-west-y.
 The nature of lifetimes may shine more clearly through a more carefully
 constructed assignment.
 
-### Placeholder: Rc, Cell, RefCell
+### Week 4: Interior Mutability - Rc, Cell, RefCell
 
-### Week 6: Unsafe
+### Week 5: Unsafe
 
 Now we venture even deeper into Rust, this week exploring `unsafe`, the feature
 which allows certain compiler checks to be elided on code blocks. In the first
@@ -251,7 +232,7 @@ Beingessner's book, the [Rustonomicon](https://doc.rust-lang.org/nomicon/),
 which discusses `unsafe` in great deal and I believe also walks through an
 implementation of `Vec`.
 
-### Week 7: Graphs
+### Week 6: Graphs
 
 In our final assignment we tackle a more open question: implementing a graph.
 Doing so involves a non-trivial amount of coding, but also some very
