@@ -280,9 +280,12 @@ with new ideas along the way.
 
    * [Rust Blog](http://blog.rust-lang.org/)
       * [Mid-Level Representation](http://blog.rust-lang.org/2016/04/19/MIR.html)
-   * [Huon Wilson](http://huonw.github.io/)
    * [Niko Matsakis](http://smallcultfollowing.com/babysteps/blog/archives/)
+   * [Felix Klock](http://blog.pnkfx.org/)
+   * [Huon Wilson](http://huonw.github.io/)
    * [llogiq](https://llogiq.github.io/)
+   * [Nick Cameron](http://featherweightmusings.blogspot.fr/)
+   * [Manish Goregaokar](https://manishearth.github.io/)
 
 #### Various Posts
    * [Error Handling](http://blog.burntsushi.net/rust-error-handling/), by
